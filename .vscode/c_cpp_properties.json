@@ -1,0 +1,14 @@
+{
+  "configurations": [
+    {
+        "name": "Mac",
+        "includePath": [
+            "${workspaceFolder}/**",
+            "/opt/homebrew/include/SDL2"  // Ajoutez le chemin d'inclusion correct ici
+        ],
+        // ...
+    }
+],
+    "version": 4
+  }
+  

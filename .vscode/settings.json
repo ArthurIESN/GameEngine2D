@@ -1,0 +1,28 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "renderer.C": "cpp",
+        "window.h": "c",
+        "sdl.h": "c",
+        "player.h": "c",
+        "structs.h": "c",
+        "player_inputs.h": "c",
+        "stdbool.h": "c",
+        "character.h": "c",
+        "ios": "c",
+        "inputs.h": "c",
+        "gamestate.h": "c",
+        "renderer.h": "c",
+        "game.h": "c",
+        "array": "c",
+        "__bit_reference": "c",
+        "bitset": "c",
+        "unordered_map": "c",
+        "physics.h": "c",
+        "__node_handle": "c",
+        "dynamicarray.h": "c",
+        "world.h": "c",
+        "basicshapes.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
