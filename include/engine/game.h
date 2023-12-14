@@ -30,7 +30,7 @@ double Game_CalculateDeltaTime(Game* game, Uint32 currentTime);
 void Game_Pause(Game* game, bool pause);
 
 //game objects collider
-void Game_CheckCollisions(Game* game);
+void Game_CheckColliders(Game* game);
 
 
 

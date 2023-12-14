@@ -15,7 +15,7 @@ struct Character{
     Physics* _physicsComponent;
     Movement* _movementComponent;
     Inputs* _inputsComponent;
-    WorldDynamicObject* _object;
+    DynamicObject* _object;
     int zIndex;
 } ;
 

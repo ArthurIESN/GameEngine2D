@@ -28,8 +28,9 @@ void Game_Pause(Game* game, bool pause){
     game->_isPaused = pause;
 }
 
-void Game_CheckCollisions(Game* game)
+void Game_CheckColliders(Game* game)
 {
+    /*OLD
     // All dynamic objects will check collision with all static objects
     for(int i = 0; i < game->_world->dynamicObjectsCount; i++)
     {
@@ -40,4 +41,6 @@ void Game_CheckCollisions(Game* game)
             printf("Object has %s\n", isCollide ? "collided" : "not collided");
         }
     }
+    */
+
 }

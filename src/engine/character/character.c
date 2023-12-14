@@ -32,7 +32,7 @@ Character* Character_init() {
     character->_movementComponent = movementDefaultParameters;
     character->_inputsComponent = Inputs_init();
 
-    character->_object = malloc(sizeof(WorldDynamicObject));
+    character->_object = malloc(sizeof(DynamicObject));
     character->_object->object = malloc(sizeof(Object));
 
     character->zIndex = 0;

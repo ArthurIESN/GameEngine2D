@@ -65,11 +65,11 @@ typedef struct
     bool hasCollider; // if false, all polygons will avoid "hasCollider" check
 } Object;
 
-// WorldDynamicObject
+// DynamicObject
 typedef struct{
     Object* object; // object
     Vector2 velocity; // velocity of the object
-} WorldDynamicObject;
+} DynamicObject;
 
 // RendererObject
 typedef struct

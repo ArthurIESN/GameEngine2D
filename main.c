@@ -68,18 +68,18 @@ int main(void) {
     int frameRandomColorCount = 0;
     RGBA colorCircle = (RGBA){rand() % 255, rand() % 255, rand() % 255, 255};
     // print all static objects positions
-    for(int i = 0; i < game->_world->staticObjectsCount; i++)
+    for(int i = 0; i < game->_world->WorldObjects->staticObjectsCount; i++)
     {
-        printf("static object %d position: %f, %f\n", i, game->_world->staticObjects[i].transform.position.x, game->_world->staticObjects[i].transform.position.y);
+        printf("static object %d position: %f, %f\n", i, game->_world->WorldObjects->staticObjects[i].object->transform.position.x, game->_world->WorldObjects->staticObjects[i].object->transform.position.y);
     }
 
     //World_RemoveStaticObject(game->_world, 1);
 
     printf("--------------------\n\n");
 
-    for(int i = 0; i < game->_world->staticObjectsCount; i++)
+    for(int i = 0; i < game->_world->WorldObjects->staticObjectsCount; i++)
     {
-        printf("static object %d position: %f, %f\n", i, game->_world->staticObjects[i].transform.position.x, game->_world->staticObjects[i].transform.position.y);
+        printf("static object %d position: %f, %f\n", i, game->_world->WorldObjects->staticObjects[i].object->transform.position.x, game->_world->WorldObjects->staticObjects[i].object->transform.position.y);
     }
 
     // platform test 
@@ -110,7 +110,7 @@ int main(void) {
     while (game->_isRunning) 
     {
         Game_UpdateDeltaTime(game);
-        Game_CheckCollisions(game);
+        Game_CheckColliders(game);
 
         if(game->_isPaused)
         {
