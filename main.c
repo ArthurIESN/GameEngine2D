@@ -32,7 +32,7 @@ int main(void) {
     Player* player = Player_init(300, 300);
 
     Size2 screenSize = {800, 600};
-    Game* game = Game_New(screenSize, 120);
+    Game* game = Game_New(screenSize, 20.0f);
 
     // needs to be in game content
     game->_world = World_init();
@@ -67,20 +67,6 @@ int main(void) {
 
     int frameRandomColorCount = 0;
     RGBA colorCircle = (RGBA){rand() % 255, rand() % 255, rand() % 255, 255};
-    // print all static objects positions
-    for(int i = 0; i < game->_world->WorldObjects->staticObjectsCount; i++)
-    {
-        printf("static object %d position: %f, %f\n", i, game->_world->WorldObjects->staticObjects[i].object->transform.position.x, game->_world->WorldObjects->staticObjects[i].object->transform.position.y);
-    }
-
-    //World_RemoveStaticObject(game->_world, 1);
-
-    printf("--------------------\n\n");
-
-    for(int i = 0; i < game->_world->WorldObjects->staticObjectsCount; i++)
-    {
-        printf("static object %d position: %f, %f\n", i, game->_world->WorldObjects->staticObjects[i].object->transform.position.x, game->_world->WorldObjects->staticObjects[i].object->transform.position.y);
-    }
 
     // platform test 
 
