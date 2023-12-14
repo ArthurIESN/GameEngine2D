@@ -19,7 +19,7 @@
 #include <game_content/player/player.h>
 #include <game_content/platform/platform.h>
 
-
+//make main build
 
 
 int main(void) {
