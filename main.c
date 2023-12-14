@@ -19,7 +19,7 @@
 #include <game_content/player/player.h>
 #include <game_content/platform/platform.h>
 
-//test 2
+//test 3
 
 int main(void) {
     #ifdef DEBUG

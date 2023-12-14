@@ -22,7 +22,8 @@
         "__node_handle": "c",
         "dynamicarray.h": "c",
         "world.h": "c",
-        "basicshapes.h": "c"
+        "basicshapes.h": "c",
+        "platform.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
