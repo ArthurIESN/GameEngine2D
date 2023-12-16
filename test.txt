@@ -1,0 +1,92 @@
+# Makefile for your project
+MAKEFLAGS += --always-make
+
+# Compiler
+CC = gcc
+
+# Compiler flags
+CFLAGS = -I/opt/homebrew/include/SDL2 -I/opt/homebrew/include/SDL2_image -I./include
+
+# Linker flags
+LDFLAGS = -L/opt/homebrew/lib -lSDL2 -lSDL2_image
+
+# Source directory
+SRC_DIR = src
+
+# Source files (all .c files in the src directory and its subdirectories)
+SRC_FILES = $(shell find $(SRC_DIR) -name '*.c')
+
+# Output directory
+BUILD_DIR := build
+
+EXECUTABLE_VULKAN_PREFIX = vk
+EXECUTABLE_OPENGL_PREFIX = gl
+EXECUTABLE_METAL_PREFIX = m
+EXECUTABLE_NAME := game
+
+# Different executable directories based on types and debug/release modes
+VULKAN_DIR := $(BUILD_DIR)/vulkan
+OPENGL_DIR := $(BUILD_DIR)/opengl
+METAL_DIR := $(BUILD_DIR)/metal
+DEBUG_VULKAN_DIR := $(BUILD_DIR)/vulkan/debug
+DEBUG_OPENGL_DIR := $(BUILD_DIR)/opengl/debug
+DEBUG_METAL_DIR := $(BUILD_DIR)/metal/debug
+
+# Executable names for different modes and types
+EXECUTABLE := $(BUILD_DIR)/$(EXECUTABLE_NAME)
+EXECUTABLE_VULKAN := $(VULKAN_DIR)/$(EXECUTABLE_NAME)_$(EXECUTABLE_VULKAN_PREFIX)
+EXECUTABLE_OPENGL := $(OPENGL_DIR)/$(EXECUTABLE_NAME)_$(EXECUTABLE_OPENGL_PREFIX)
+EXECUTABLE_METAL := $(METAL_DIR)/$(EXECUTABLE_NAME)_$(EXECUTABLE_METAL_PREFIX)
+EXECUTABLE_DEBUG_VULKAN := $(DEBUG_VULKAN_DIR)/$(EXECUTABLE_NAME)_DEBUG_$(EXECUTABLE_VULKAN_PREFIX)
+EXECUTABLE_DEBUG_OPENGL := $(DEBUG_OPENGL_DIR)/$(EXECUTABLE_NAME)_DEBUG_$(EXECUTABLE_OPENGL_PREFIX)
+EXECUTABLE_DEBUG_METAL := $(DEBUG_METAL_DIR)/$(EXECUTABLE_NAME)_DEBUG_$(EXECUTABLE_METAL_PREFIX)
+
+# Default target
+.DEFAULT_GOAL := all
+
+# Rules to build the executable in debug mode
+debug: CFLAGS += -g -DDEBUG -DDEBUG_COLLIDER
+
+# Rules to build the executables for different types
+vulkan: $(EXECUTABLE_VULKAN)
+opengl: $(EXECUTABLE_OPENGL)
+metal: $(EXECUTABLE_METAL)
+debug vulkan: $(EXECUTABLE_DEBUG_VULKAN)
+debug opengl: $(EXECUTABLE_DEBUG_OPENGL)
+debug metal: $(EXECUTABLE_DEBUG_METAL)
+
+
+$(EXECUTABLE_VULKAN): $(SRC_FILES) main.c
+	mkdir -p $(VULKAN_DIR)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) -DUSE_VULKAN
+
+$(EXECUTABLE_OPENGL): $(SRC_FILES) main.c
+	mkdir -p $(OPENGL_DIR)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) -DUSE_OPENGL
+
+$(EXECUTABLE_METAL): $(SRC_FILES) main.c
+	mkdir -p $(METAL_DIR)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) -DUSE_METAL
+
+$(EXECUTABLE_DEBUG_VULKAN): $(SRC_FILES) main.c
+	mkdir -p $(DEBUG_VULKAN_DIR)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) -DUSE_VULKAN
+
+$(EXECUTABLE_DEBUG_OPENGL): $(SRC_FILES) main.c
+	mkdir -p $(DEBUG_OPENGL_DIR)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) -DUSE_OPENGL
+
+$(EXECUTABLE_DEBUG_METAL): $(SRC_FILES) main.c
+	mkdir -p $(DEBUG_METAL_DIR)
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS) -DUSE_METAL
+
+# Rules to build the default executable
+all: $(EXECUTABLE)
+
+$(EXECUTABLE): $(SRC_FILES) main.c
+	$(CC) $(CFLAGS) -o $@ $^ $(LDFLAGS)
+
+clean:
+	rm -rf $(BUILD_DIR)
+
+.PHONY: all clean debug vulkan opengl metal

@@ -32,7 +32,7 @@ int main(void) {
     Player* player = Player_init(300, 300);
 
     Size2 screenSize = {800, 600};
-    Game* game = Game_New(screenSize, 20.0f);
+    Game* game = Game_New(screenSize, 120);
 
     // needs to be in game content
     game->_world = World_init();
